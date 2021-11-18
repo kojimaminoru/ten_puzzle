@@ -13,11 +13,17 @@ bool isOpe(char c){
 }
 
 double ReversePolishNotation(string s){
-    double ans = 0.0;
+    double ans = 0.0, a = 0, b = 0;
     stack<double> list;
     while(s != ""){
         if(isOpe(s[0])){
-            // korekara kaku
+            if(s[0] == '+'){
+                a = list.top();
+                list.pop();
+                b = list.top();
+                list.pop();
+                list.push(a + b);
+            }
             s = s.substr(1);
         }
         else {
@@ -34,9 +40,9 @@ double ReversePolishNotation(string s){
 
 int main(int argc, const char * argv[]) {
     int a, b;
-    vector<int> num(NUMS);
+    vector<double> num(NUMS);
     string cul = "+++", s = "12+23**";
-//    rep(i, NUMS) cin >> num[i];
+    rep(i, NUMS) cin >> num[i];
     
     ReversePolishNotation(s);
     
