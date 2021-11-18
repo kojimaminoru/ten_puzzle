@@ -18,9 +18,10 @@ double ReversePolishNotation(string s){
     while(s != ""){
         if(isOpe(s[0])){
             // korekara kaku
+            s = s.substr(1);
         }
         else {
-            list.push(s[0]);
+            list.push(s[0] - '0');
             s = s.substr(1);
         }
     }
@@ -35,10 +36,10 @@ int main(int argc, const char * argv[]) {
     int a, b;
     vector<int> num(NUMS);
     string cul = "+++", s = "12+23**";
-    rep(i, NUMS) cin >> num[i];
+//    rep(i, NUMS) cin >> num[i];
     
     ReversePolishNotation(s);
     
-    cout << a << b << endl;
+    cout << "a" << endl;
     return 0;
 }
