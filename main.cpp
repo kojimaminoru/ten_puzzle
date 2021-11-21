@@ -74,7 +74,6 @@ int main(int argc, const char * argv[]) {
     //rep(i, NUMS) cin >> num[i];
     
     ans = ReversePolishNotation(s);
-    
     cout << ans << endl;
     return 0;
 }
