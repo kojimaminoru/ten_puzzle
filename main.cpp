@@ -66,11 +66,30 @@ double ReversePolishNotation(string s){
     return ans;
 }
 
+void insert_paren(string &s, int l, int r){
+    s.insert(l, "(");
+    s.insert(r+1, ")");
+}
+
+string Tenset(string s){
+    vector<int> poz = {0, 2, 4, 6};
+    string tmp = "";
+    while(s != ""){
+        if(isOpe(s[0])){
+            
+        }
+        else {
+            
+        }
+    }
+    return tmp;
+}
+
 int main(int argc, const char * argv[]) {
     int a, b;
     vector<double> num(NUMS);
     double ans = 0.0;
-    string cul = "+++", s = "8115/-/";
+    string cul = "+++", s = "1234/-/";
     //rep(i, NUMS) cin >> num[i];
     
     ans = ReversePolishNotation(s);
