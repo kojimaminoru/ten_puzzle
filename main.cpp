@@ -68,18 +68,28 @@ double ReversePolishNotation(string s){
 
 void insert_paren(string &s, int l, int r){
     s.insert(l, "(");
-    s.insert(r+1, ")");
+    s.insert(r+2, ")");
+}
+
+int space(string s){
+    rep(i, s.size()) if(s[s.size()-1-i] == ' ') return s.size()-1-i;
+    return -1;
 }
 
 string Tenset(string s){
     vector<int> poz = {0, 2, 4, 6};
     string tmp = "";
+    tmp += s[0];
+    s.substr(1);
     while(s != ""){
         if(isOpe(s[0])){
-            
+            tmp[space(tmp)] = s[0];
+            s = s.substr(1);
         }
         else {
-            
+            tmp += " ";
+            tmp += s[0];
+            s = s.substr(1);
         }
     }
     return tmp;
@@ -89,10 +99,11 @@ int main(int argc, const char * argv[]) {
     int a, b;
     vector<double> num(NUMS);
     double ans = 0.0;
-    string cul = "+++", s = "1234/-/";
+    string cul = "+++", s = "1234/-/", c = "aaabbbccc";
     //rep(i, NUMS) cin >> num[i];
     
     ans = ReversePolishNotation(s);
     cout << ans << endl;
+    cout << Tenset(s) << endl;
     return 0;
 }
