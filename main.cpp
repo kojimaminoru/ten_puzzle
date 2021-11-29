@@ -104,7 +104,11 @@ string Allset(int a0, int a1, int a2, int a3){
     vector<double> set(4);
     set[0] = a0, set[1] = a1, set[2] = a2, set[3] = a3;
     string s = "";
-    
+    rep(i, 24){
+        rep(j, 6){
+            
+        }
+    }
     return s;
 }
 
