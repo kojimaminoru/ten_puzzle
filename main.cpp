@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stack>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 #define rep(i, b) for(int i = 0; i < int(b); i++)
 #define NUMS 4
@@ -102,13 +103,25 @@ string Tenset(string s){
 
 string Allset(int a0, int a1, int a2, int a3){
     vector<double> set(4);
+    int per[4] = {0, 1, 2, 3}, tmp = 0;
+    char c0, c1, c2, c[4] = {'+', '-', '*', '/'};
     set[0] = a0, set[1] = a1, set[2] = a2, set[3] = a3;
     string s = "";
-    rep(i, 24){
-        rep(j, 6){
+    do{
+        rep(j, 64){
+            tmp = j;
+            c0 = c[tmp % 4];
+            tmp /= 4;
+            c1 = c[tmp % 4];
+            tmp /= 4;
+            c2 = c[tmp % 4];
+            tmp /= 4;
             
+            rep(k, 5){
+                
+            }
         }
-    }
+    }while(next_permutation(per, per + 4));
     return s;
 }
 
