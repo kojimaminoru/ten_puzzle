@@ -118,10 +118,11 @@ string Allset(int a0, int a1, int a2, int a3){
             tmp /= 4;
             
             rep(k, 5){
-                
+                //s = c0 + 'a' + c2;
             }
         }
     }while(next_permutation(per, per + 4));
+    cout << s << endl;
     return s;
 }
 
@@ -132,10 +133,12 @@ int main(int argc, const char * argv[]) {
     string cul = "+++", s = "6234/-+", c = "aaabbbccc";
     //rep(i, NUMS) cin >> num[i];
     
-    
-    
+    char aa = 'U';
+    cul = aa + 'a';
+    cout << cul << "a" << endl;
     ans = ReversePolishNotation(s);
     cout << ans << endl;
     cout << Tenset(s) << endl;
+    //Allset(1, 2, 3, 4);
     return 0;
 }
