@@ -47,7 +47,7 @@ double ReversePolishNotation(string s){
                 b = list.top();
                 list.pop();
                 if(fabs(a) < delta){
-                    cout << "division by zero" << endl;
+                    //cout << "division by zero" << endl;
                     s = "no";
                     break;
                 }
@@ -65,6 +65,11 @@ double ReversePolishNotation(string s){
     }
     else ans = list.top();
     return ans;
+}
+
+bool isTen(string s){
+    if(fabs(ReversePolishNotation(s) - 10) < delta) return 1;
+    return 0;
 }
 
 void insert_paren(string &s, int l, int r){
@@ -102,24 +107,36 @@ string Tenset(string s){
 }
 
 string Allset(int a0, int a1, int a2, int a3){
-    vector<double> set(4);
+    vector<int> set(4);
     int per[4] = {0, 1, 2, 3}, tmp = 0;
     char c0, c1, c2, c[4] = {'+', '-', '*', '/'};
     set[0] = a0, set[1] = a1, set[2] = a2, set[3] = a3;
-    string s = "";
+    string s = "0123456", t;
     do{
+        s[0] = set[per[0]] + '0';
+        s[1] = set[per[1]] + '0';
+        s[2] = set[per[2]] + '0';
+        s[3] = set[per[3]] + '0';
         rep(j, 64){
             tmp = j;
-            c0 = c[tmp % 4];
+            s[4] = c[tmp % 4];
             tmp /= 4;
-            c1 = c[tmp % 4];
+            s[5] = c[tmp % 4];
             tmp /= 4;
-            c2 = c[tmp % 4];
+            s[6] = c[tmp % 4];
             tmp /= 4;
             
-            rep(k, 5){
-                //s = c0 + 'a' + c2;
-            }
+            if(isTen(s)) return s;
+            swap(s[3], s[4]);
+            if(isTen(s)) return s;
+            swap(s[4], s[5]);
+            if(isTen(s)) return s;
+            swap(s[2], s[3]);
+            if(isTen(s)) return s;
+            swap(s[4], s[5]);
+            if(isTen(s)) return s;
+            swap(s[2], s[3]);
+            swap(s[3], s[4]);
         }
     }while(next_permutation(per, per + 4));
     cout << s << endl;
@@ -133,12 +150,8 @@ int main(int argc, const char * argv[]) {
     string cul = "+++", s = "6234/-+", c = "aaabbbccc";
     //rep(i, NUMS) cin >> num[i];
     
-    char aa = 'U';
-    cul = aa + 'a';
-    cout << cul << "a" << endl;
     ans = ReversePolishNotation(s);
     cout << ans << endl;
-    cout << Tenset(s) << endl;
-    //Allset(1, 2, 3, 4);
+    cout << Tenset(Allset(1, 1, 5, 8)) << endl;
     return 0;
 }
