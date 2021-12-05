@@ -106,7 +106,7 @@ string Tenset(string s){
     return list.top();
 }
 
-string Allset(int a0, int a1, int a2, int a3){
+bool canTen(int a0, int a1, int a2, int a3){
     vector<int> set(4);
     int per[4] = {0, 1, 2, 3}, tmp = 0;
     char c0, c1, c2, c[4] = {'+', '-', '*', '/'};
@@ -126,21 +126,20 @@ string Allset(int a0, int a1, int a2, int a3){
             s[6] = c[tmp % 4];
             tmp /= 4;
             
-            if(isTen(s)) return s;
+            if(isTen(s)) return 1;
             swap(s[3], s[4]);
-            if(isTen(s)) return s;
+            if(isTen(s)) return 1;
             swap(s[4], s[5]);
-            if(isTen(s)) return s;
+            if(isTen(s)) return 1;
             swap(s[2], s[3]);
-            if(isTen(s)) return s;
+            if(isTen(s)) return 1;
             swap(s[4], s[5]);
-            if(isTen(s)) return s;
+            if(isTen(s)) return 1;
             swap(s[2], s[3]);
             swap(s[3], s[4]);
         }
     }while(next_permutation(per, per + 4));
-    cout << s << endl;
-    return s;
+    return 0;
 }
 
 int main(int argc, const char * argv[]) {
@@ -152,6 +151,15 @@ int main(int argc, const char * argv[]) {
     
     ans = ReversePolishNotation(s);
     cout << ans << endl;
-    cout << Tenset(Allset(1, 1, 5, 8)) << endl;
+    rep(i, 10){
+        rep(j, 10){
+            rep(k, 10){
+                rep(l, 10){
+                    if(canTen(i+'0', j+'0', k+'0', l+'0')) cout << i << j << k << l << endl;
+                }
+            }
+        }
+    }
+    cout << "" << endl;
     return 0;
 }
