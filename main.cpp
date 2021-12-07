@@ -162,7 +162,7 @@ int main(int argc, const char * argv[]) {
 //            }
 //        }
 //    }
-    cout << canTen(3, 4, 7, 9) << endl;
+    cout << canTen(3, 4, 7, 8) << endl;
     cout << a << endl;
     return 0;
 }
