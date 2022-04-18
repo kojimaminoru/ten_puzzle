@@ -143,26 +143,15 @@ string canTen(int a0, int a1, int a2, int a3){
 }
 
 int main(int argc, const char * argv[]) {
-    int a, b;
+    int a[4];
     vector<double> num(NUMS);
     double ans = 0.0;
-    string cul = "+++", s = "6234/-+", c = "aaabbbccc";
+    string b, s = "6234/-+", c = "aaabbbccc";
     //rep(i, NUMS) cin >> num[i];
     
-    ans = ReversePolishNotation(s);
-    cout << ans << endl;
-    a = 0;
-//    rep(i, 10){
-//        rep(j, 10){
-//            rep(k, 10){
-//                rep(l, 10){
-//                    a++;
-//                    if(canTen(i, j, k, l)) cout << i << j << k << l << endl;
-//                }
-//            }
-//        }
-//    }
-    cout << canTen(3, 4, 7, 8) << endl;
-    cout << a << endl;
+    cin >> a[0] >> a[1] >> a[2] >> a[3];
+    b = canTen(a[0], a[1], a[2], a[3]);
+    if(b == "no") cout << "can't make ten\n";
+    else cout << "can make ten: " << Tenset(b) << endl;
     return 0;
 }
